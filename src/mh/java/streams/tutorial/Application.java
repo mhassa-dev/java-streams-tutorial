@@ -5,6 +5,7 @@ import mh.java.streams.tutorial.model.Person;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by mh on 24/08/2020.
@@ -25,6 +26,16 @@ public class Application {
         }
 
         females.forEach(System.out::println);
+
+        // Declarative approach
+        // Filter
+        System.out.println("Filter: ");
+
+        List<Person> femalesFilter = people.stream()
+                .filter(person -> person.getGender().equals(Gender.FEMALE))
+                .collect(Collectors.toList());
+
+        femalesFilter.forEach(System.out::println);
 
     }
 
