@@ -51,6 +51,24 @@ public class Application {
         System.out.println("After: ");
         peopleSorted.forEach(System.out::println);
 
+        // All match
+        System.out.println("--- All match ---");
+        boolean allMatch = people.stream()
+                .allMatch(person -> person.getAge() > 10);
+        System.out.println("All persons age great than 10: " + allMatch);
+
+        // Any match
+        System.out.println("--- Any match ---");
+        boolean anyMatch = people.stream()
+                .anyMatch(person -> person.getAge() > 10);
+        System.out.println("Any person age great than 10: " + anyMatch);
+
+        // None match
+        System.out.println("--- Any match ---");
+        boolean noneMatch = people.stream()
+                .noneMatch(person -> person.getAge() > 10);
+        System.out.println("None person age great than 10: " + noneMatch);
+
     }
 
     private static List<Person> getPeople() {
