@@ -4,6 +4,7 @@ import mh.java.streams.tutorial.model.Gender;
 import mh.java.streams.tutorial.model.Person;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,6 +37,19 @@ public class Application {
                 .collect(Collectors.toList());
 
         femalesFilter.forEach(System.out::println);
+
+        // Sort
+        System.out.println("--- Sort ---");
+        System.out.println("Before: ");
+        people.forEach(System.out::println);
+
+        List<Person> peopleSorted = people.stream()
+                .sorted(Comparator.comparing(Person::getAge)) // 1 -> 2 -> 3
+                // .sorted(Comparator.comparing(Person::getAge).reversed()) // To reverse ordering 3 -> 2 -> 1
+                .collect(Collectors.toList());
+
+        System.out.println("After: ");
+        peopleSorted.forEach(System.out::println);
 
     }
 
