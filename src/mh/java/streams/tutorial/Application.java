@@ -69,6 +69,18 @@ public class Application {
                 .noneMatch(person -> person.getAge() > 10);
         System.out.println("None person age great than 10: " + noneMatch);
 
+        // Max
+        System.out.println("--- Max ---");
+        people.stream()
+                .max(Comparator.comparing(Person::getAge))
+                .ifPresent(System.out::println);
+
+        // Min
+        System.out.println("--- Min ---");
+        people.stream()
+                .min(Comparator.comparing(Person::getAge))
+                .ifPresent(System.out::println);
+
     }
 
     private static List<Person> getPeople() {
