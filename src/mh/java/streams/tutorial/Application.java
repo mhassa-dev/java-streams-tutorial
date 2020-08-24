@@ -6,6 +6,7 @@ import mh.java.streams.tutorial.model.Person;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -80,6 +81,15 @@ public class Application {
         people.stream()
                 .min(Comparator.comparing(Person::getAge))
                 .ifPresent(System.out::println);
+
+        // Group
+        System.out.println("--- Group ---");
+        Map<Gender, List<Person>> genderListMap = people.stream()
+                .collect(Collectors.groupingBy(Person::getGender));
+        genderListMap.forEach((gender, people1) -> {
+            System.out.println(gender);
+            people1.forEach(System.out::println);
+        });
 
     }
 
